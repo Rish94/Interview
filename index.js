@@ -3,6 +3,8 @@ const app = express();
 
 const mongoose = require("mongoose");
 
+const port=process.env.PORT;
+
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
@@ -418,6 +420,6 @@ res.send(data);
 
 
 
-app.listen(8080,()=>{
+app.listen(5000,()=>{
     console.log("Server Started");
 })
