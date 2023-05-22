@@ -1,393 +1,393 @@
 const express = require("express");
 const app = express();
 
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-// const cors = require('cors');
-// const bodyParser = require('body-parser');
-
-
-// mongoose.connect('mongodb+srv://rishabhagarwal8444:Rish%401234@cluster0.gemuai4.mongodb.net/?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true}).then(function(){
-//     console.log('Connected to MongoDB');
-// }).catch(function(err){
-//     console.log(err);
-// });
-
-// app.use(cors());
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
 
-// app.use(bodyParser.json());
+mongoose.connect('mongodb+srv://rishabhagarwal8444:Rish%401234@cluster0.gemuai4.mongodb.net/?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true}).then(function(){
+    console.log('Connected to MongoDB');
+}).catch(function(err){
+    console.log(err);
+});
+
+app.use(cors());
 
 
-// const userSchema = mongoose.Schema({
-//              username:String,
-//              password:String,
-//              confirmpassword:String
-// })
-
-// const userModel = mongoose.model("UserData",userSchema);
-
-// app.post('/signup',async (req,res)=>{
-//     let user = new userModel();
-//     user.username = req.body.username;
-//     user.password = req.body.password;
-//     user.confirmpassword = req.body.c_password
-//     const resulted_doc = await user.save();
+app.use(bodyParser.json());
 
 
+const userSchema = mongoose.Schema({
+             username:String,
+             password:String,
+             confirmpassword:String
+})
 
-//     //res.send("Hello");
-//     res.json(req.body);
-//     //console.log(resulted_doc);
-//     //res.send(resulted_doc);
-// })
+const userModel = mongoose.model("UserData",userSchema);
 
-
-// app.post('/login',async (req,res)=>{
-
-// try{
-//     let user = req.body.username;
-//     let pass = req.body.password;
-
-//     //console.log(`${user} and password is ${pass}`);
-
-//     //dhund rahe he data
-//     const user_cred = await userModel.findOne({username:user,password:pass});
-
-//     //console.log(user_cred);
-//     // res.send(user_cred);
-//     if(user_cred==null){
-//         res.send(null);
-//     }else{
-//         res.send(user_cred);
-//     }
+app.post('/signup',async (req,res)=>{
+    let user = new userModel();
+    user.username = req.body.username;
+    user.password = req.body.password;
+    user.confirmpassword = req.body.c_password
+    const resulted_doc = await user.save();
 
 
-// }catch{
-//     console.log("err")
-// }
+
+    //res.send("Hello");
+    res.json(req.body);
+    //console.log(resulted_doc);
+    //res.send(resulted_doc);
+})
+
+
+app.post('/login',async (req,res)=>{
+
+try{
+    let user = req.body.username;
+    let pass = req.body.password;
+
+    //console.log(`${user} and password is ${pass}`);
+
+    //dhund rahe he data
+    const user_cred = await userModel.findOne({username:user,password:pass});
+
+    //console.log(user_cred);
+    // res.send(user_cred);
+    if(user_cred==null){
+        res.send(null);
+    }else{
+        res.send(user_cred);
+    }
+
+
+}catch{
+    console.log("err")
+}
 
    
-// })
+})
 
 
-// //for databases of content
+//for databases of content
 
 
 
-// //sql
-// const Sql_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//sql
+const Sql_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const SqlModel = mongoose.model("Sql",Sql_Schema);
+const SqlModel = mongoose.model("Sql",Sql_Schema);
 
-// app.get('/sql-questions',async (req,res)=>{
-// const data = await SqlModel.find({});
-// res.send(data); 
+app.get('/sql-questions',async (req,res)=>{
+const data = await SqlModel.find({});
+res.send(data); 
 
-// })
+})
 
 
 
 
 
-// //aptitute
-// const Aptitute_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//aptitute
+const Aptitute_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const AptituteModel = mongoose.model("Aptitute",Aptitute_Schema);
+const AptituteModel = mongoose.model("Aptitute",Aptitute_Schema);
 
-// app.get('/Aptitute-questions',async (req,res)=>{
-// const data = await AptituteModel.find({});
-// res.send(data); 
+app.get('/Aptitute-questions',async (req,res)=>{
+const data = await AptituteModel.find({});
+res.send(data); 
 
-// })
+})
 
 
-// //Reasoning
-// const Reasoning_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//Reasoning
+const Reasoning_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const ReasoningModel = mongoose.model("Reasoning",Reasoning_Schema);
+const ReasoningModel = mongoose.model("Reasoning",Reasoning_Schema);
 
-// app.get('/Reasoning-questions',async (req,res)=>{
-// const data = await ReasoningModel.find({});
-// res.send(data); 
+app.get('/Reasoning-questions',async (req,res)=>{
+const data = await ReasoningModel.find({});
+res.send(data); 
 
-// })
+})
 
 
-// //VerbalAbility
-// const VerbalAbility_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//VerbalAbility
+const VerbalAbility_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const VerbalAbilityModel = mongoose.model("VerbalAbility",VerbalAbility_Schema);
+const VerbalAbilityModel = mongoose.model("VerbalAbility",VerbalAbility_Schema);
 
-// app.get('/VerbalAbility-questions',async (req,res)=>{
-// const data = await VerbalAbilityModel.find({});
-// res.send(data); 
+app.get('/VerbalAbility-questions',async (req,res)=>{
+const data = await VerbalAbilityModel.find({});
+res.send(data); 
 
-// })
+})
 
 
 
 
-// //HRQuestions
-// const HRQuestions_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//HRQuestions
+const HRQuestions_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const HRQuestionsModel = mongoose.model("HRQuestions",HRQuestions_Schema);
+const HRQuestionsModel = mongoose.model("HRQuestions",HRQuestions_Schema);
 
-// app.get('/HRQuestions-questions',async (req,res)=>{
-// const data = await HRQuestionsModel.find({});
-// res.send(data); 
+app.get('/HRQuestions-questions',async (req,res)=>{
+const data = await HRQuestionsModel.find({});
+res.send(data); 
 
-// })
+})
 
-// //TechnicalQuestions
-// const TechnicalQuestions_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//TechnicalQuestions
+const TechnicalQuestions_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const TechnicalQuestionsModel = mongoose.model("TechnicalQuestions",TechnicalQuestions_Schema);
+const TechnicalQuestionsModel = mongoose.model("TechnicalQuestions",TechnicalQuestions_Schema);
 
-// app.get('/TechnicalQuestions-questions',async (req,res)=>{
-// const data = await TechnicalQuestionsModel.find({});
-// res.send(data); 
+app.get('/TechnicalQuestions-questions',async (req,res)=>{
+const data = await TechnicalQuestionsModel.find({});
+res.send(data); 
 
-// })
+})
 
 
-// //Programming
-// const Programming_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//Programming
+const Programming_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const ProgrammingModel = mongoose.model("Programming",Programming_Schema);
+const ProgrammingModel = mongoose.model("Programming",Programming_Schema);
 
-// app.get('/Programming-questions',async (req,res)=>{
-// const data = await ProgrammingModel.find({});
-// res.send(data); 
+app.get('/Programming-questions',async (req,res)=>{
+const data = await ProgrammingModel.find({});
+res.send(data); 
 
-// })
+})
 
 
 
-// //ReactJS
-// const ReactJS_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//ReactJS
+const ReactJS_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const ReactJSModel = mongoose.model("ReactJS",ReactJS_Schema);
+const ReactJSModel = mongoose.model("ReactJS",ReactJS_Schema);
 
-// app.get('/ReactJS-questions',async (req,res)=>{
-// const data = await ReactJSModel.find({});
-// res.send(data); 
+app.get('/ReactJS-questions',async (req,res)=>{
+const data = await ReactJSModel.find({});
+res.send(data); 
 
-// })
+})
 
 
-// //MachineLearning
-// const MachineLearning_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//MachineLearning
+const MachineLearning_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const MachineLearningModel = mongoose.model("MachineLearning",MachineLearning_Schema);
+const MachineLearningModel = mongoose.model("MachineLearning",MachineLearning_Schema);
 
-// app.get('/MachineLearning-questions',async (req,res)=>{
-// const data = await MachineLearningModel.find({});
-// res.send(data); 
+app.get('/MachineLearning-questions',async (req,res)=>{
+const data = await MachineLearningModel.find({});
+res.send(data); 
 
-// })
+})
 
 
-// //DataStructures
-// const DataStructures_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//DataStructures
+const DataStructures_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const DataStructuresModel = mongoose.model("DataStructures",DataStructures_Schema);
+const DataStructuresModel = mongoose.model("DataStructures",DataStructures_Schema);
 
-// app.get('/DataStructures-questions',async (req,res)=>{
-// const data = await DataStructuresModel.find({});
-// res.send(data); 
+app.get('/DataStructures-questions',async (req,res)=>{
+const data = await DataStructuresModel.find({});
+res.send(data); 
 
-// })
+})
 
 
 
-// //ComputerNetworks
-// const ComputerNetworks_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//ComputerNetworks
+const ComputerNetworks_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const ComputerNetworksModel = mongoose.model("ComputerNetworks",ComputerNetworks_Schema);
+const ComputerNetworksModel = mongoose.model("ComputerNetworks",ComputerNetworks_Schema);
 
-// app.get('/ComputerNetworks-questions',async (req,res)=>{
-// const data = await ComputerNetworksModel.find({});
-// res.send(data); 
+app.get('/ComputerNetworks-questions',async (req,res)=>{
+const data = await ComputerNetworksModel.find({});
+res.send(data); 
 
-// })
+})
 
 
 
-// //Cpp
-// const Cpp_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//Cpp
+const Cpp_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const CppModel = mongoose.model("Cpp",Cpp_Schema);
+const CppModel = mongoose.model("Cpp",Cpp_Schema);
 
-// app.get('/Cpp-questions',async (req,res)=>{
-// const data = await CppModel.find({});
-// res.send(data); 
+app.get('/Cpp-questions',async (req,res)=>{
+const data = await CppModel.find({});
+res.send(data); 
 
-// })
+})
 
 
-// //Cprogramming
-// const Cprogramming_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//Cprogramming
+const Cprogramming_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const CprogrammingModel = mongoose.model("Cprogramming",Cprogramming_Schema);
+const CprogrammingModel = mongoose.model("Cprogramming",Cprogramming_Schema);
 
-// app.get('/Cprogramming-questions',async (req,res)=>{
-// const data = await CprogrammingModel.find({});
-// res.send(data); 
+app.get('/Cprogramming-questions',async (req,res)=>{
+const data = await CprogrammingModel.find({});
+res.send(data); 
 
-// })
+})
 
 
 
-// //AWS
-// const AWS_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//AWS
+const AWS_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const AWSModel = mongoose.model("AWS",AWS_Schema);
+const AWSModel = mongoose.model("AWS",AWS_Schema);
 
-// app.get('/AWS-questions',async (req,res)=>{
-// const data = await AWSModel.find({});
-// res.send(data); 
+app.get('/AWS-questions',async (req,res)=>{
+const data = await AWSModel.find({});
+res.send(data); 
 
-// })
+})
 
-// //SoftwareDevelopment
-// const SoftwareDevelopment_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//SoftwareDevelopment
+const SoftwareDevelopment_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const SoftwareDevelopmentModel = mongoose.model("SoftwareDevelopment",SoftwareDevelopment_Schema);
+const SoftwareDevelopmentModel = mongoose.model("SoftwareDevelopment",SoftwareDevelopment_Schema);
 
-// app.get('/SoftwareDevelopment-questions',async (req,res)=>{
-// const data = await SoftwareDevelopmentModel.find({});
-// res.send(data); 
+app.get('/SoftwareDevelopment-questions',async (req,res)=>{
+const data = await SoftwareDevelopmentModel.find({});
+res.send(data); 
 
-// })
+})
 
 
-// //Java
-// const Java_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//Java
+const Java_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const JavaModel = mongoose.model("Java",Java_Schema);
+const JavaModel = mongoose.model("Java",Java_Schema);
 
-// app.get('/Java-questions',async (req,res)=>{
-// const data = await JavaModel.find({});
-// res.send(data); 
+app.get('/Java-questions',async (req,res)=>{
+const data = await JavaModel.find({});
+res.send(data); 
 
-// })
+})
 
 
-// //Database
-// const Database_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//Database
+const Database_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const DatabaseModel = mongoose.model("Database",Database_Schema);
+const DatabaseModel = mongoose.model("Database",Database_Schema);
 
-// app.get('/Database-questions',async (req,res)=>{
-// const data = await DatabaseModel.find({});
-// res.send(data); 
+app.get('/Database-questions',async (req,res)=>{
+const data = await DatabaseModel.find({});
+res.send(data); 
 
-// })
+})
 
 
 
 
-// //Firebase
-// const Firebase_Schema  = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     answer:String,
-// })
+//Firebase
+const Firebase_Schema  = mongoose.Schema({
+    qno:String,
+    question:String,
+    answer:String,
+})
 
-// const FirebaseModel = mongoose.model("Firebase",Firebase_Schema);
+const FirebaseModel = mongoose.model("Firebase",Firebase_Schema);
 
-// app.get('/Firebase-questions',async (req,res)=>{
-// const data = await DatabaseModel.find({});
-// res.send(data); 
+app.get('/Firebase-questions',async (req,res)=>{
+const data = await DatabaseModel.find({});
+res.send(data); 
 
-// })
+})
 
 
-// const MocktestSchema = mongoose.Schema({
-//     qno:String,
-//     question:String,
-//     option1:String,
-//     option2:String,
-//     option3:String,
-//     option4:String,
-// })
+const MocktestSchema = mongoose.Schema({
+    qno:String,
+    question:String,
+    option1:String,
+    option2:String,
+    option3:String,
+    option4:String,
+})
 
-// const MockTest = mongoose.model("MockTest",MocktestSchema);
+const MockTest = mongoose.model("MockTest",MocktestSchema);
 
-// app.get('/mocktest',async (req,res)=>{
-// const data = await MockTest.find({});
-// //console.log(data);
-// res.send(data); 
-// })
+app.get('/mocktest',async (req,res)=>{
+const data = await MockTest.find({});
+//console.log(data);
+res.send(data); 
+})
 
 
 
