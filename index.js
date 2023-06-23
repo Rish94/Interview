@@ -16,7 +16,7 @@ mongoose.connect('mongodb+srv://rishabhagarwal8444:Rish%401234@cluster0.gemuai4.
 });
 
 app.use(cors());
-
+app.use(express.static('static'))
 
 app.use(bodyParser.json());
 

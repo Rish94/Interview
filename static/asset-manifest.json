@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b04c8f8e.css",
+    "main.js": "/static/js/main.c3fbaed9.js",
+    "static/js/787.dd1b7910.chunk.js": "/static/js/787.dd1b7910.chunk.js",
+    "static/media/map.png": "/static/media/map.53e08869b238bd4ba6da.png",
+    "static/media/reasoning.png": "/static/media/reasoning.2515f100423d08cdb340.png",
+    "static/media/grow.png": "/static/media/grow.8dfe79e56811854a1a84.png",
+    "static/media/insta.png": "/static/media/insta.7d667a96a21e46cd605f.png",
+    "static/media/miniplay.png": "/static/media/miniplay.10b26fa06ff4029b94f3.png",
+    "static/media/apptitute.png": "/static/media/apptitute.0f344510581a6500958b.png",
+    "static/media/technical.png": "/static/media/technical.194908fc088b49c5b4a7.png",
+    "static/media/hr.png": "/static/media/hr.3465b17cf4b9613da90a.png",
+    "static/media/verbal.png": "/static/media/verbal.5b1b449645776e179d52.png",
+    "static/media/twitter.png": "/static/media/twitter.7c5d9c1b3b98095c89c9.png",
+    "static/media/companies.png": "/static/media/companies.d6961a4343dea700ac3b.png",
+    "static/media/linkedin.png": "/static/media/linkedin.393b97ae0c9d8213da01.png",
+    "static/media/facebook.png": "/static/media/facebook.5e9d775ba3022b19f4de.png",
+    "static/media/logo.png": "/static/media/logo.1ec1d4e83090fb8eb315.png",
+    "static/media/iosdownload.png": "/static/media/iosdownload.7dd5bf529828552eca71.png",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "main.b04c8f8e.css.map": "/static/css/main.b04c8f8e.css.map",
+    "main.c3fbaed9.js.map": "/static/js/main.c3fbaed9.js.map",
+    "787.dd1b7910.chunk.js.map": "/static/js/787.dd1b7910.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b04c8f8e.css",
+    "static/js/main.c3fbaed9.js"
+  ]
+}
